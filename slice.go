@@ -2,8 +2,6 @@ package es6
 
 import (
 	"math/rand"
-
-	"spliveGoserve/packages/constraints"
 )
 
 // Filter iterates over elements of collection, returning an array of all elements predicate returns truthy for.
@@ -569,7 +567,7 @@ func Compact[T comparable](collection []T) []T {
 
 // IsSorted checks if a slice is sorted.
 // Play: https://go.dev/play/p/mc3qR-t4mcx
-func IsSorted[T constraints.Ordered](collection []T) bool {
+func IsSorted[T Ordered](collection []T) bool {
 	for i := 1; i < len(collection); i++ {
 		if collection[i-1] > collection[i] {
 			return false
@@ -581,7 +579,7 @@ func IsSorted[T constraints.Ordered](collection []T) bool {
 
 // IsSortedByKey checks if a slice is sorted by iteratee.
 // Play: https://go.dev/play/p/wiG6XyBBu49
-func IsSortedByKey[T any, K constraints.Ordered](collection []T, iteratee func(item T) K) bool {
+func IsSortedByKey[T any, K Ordered](collection []T, iteratee func(item T) K) bool {
 	size := len(collection)
 
 	for i := 0; i < size-1; i++ {

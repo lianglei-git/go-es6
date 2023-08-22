@@ -3,11 +3,7 @@ package es6
 import (
 	"fmt"
 	"math/rand"
-
-	"spliveGoserve/packages/constraints"
 )
-
-// import "golang.org/x/exp/constraints"
 
 // IndexOf returns the index at which the first occurrence of a value is found in an array or return -1
 // if the value cannot be found.
@@ -222,7 +218,7 @@ func FindDuplicatesBy[T any, U comparable](collection []T, iteratee func(item T)
 
 // Min search the minimum value of a collection.
 // Returns zero value when collection is empty.
-func Min[T constraints.Ordered](collection []T) T {
+func Min[T Ordered](collection []T) T {
 	var min T
 
 	if len(collection) == 0 {
@@ -267,7 +263,7 @@ func MinBy[T any](collection []T, comparison func(a T, b T) bool) T {
 
 // Max searches the maximum value of a collection.
 // Returns zero value when collection is empty.
-func Max[T constraints.Ordered](collection []T) T {
+func Max[T Ordered](collection []T) T {
 	var max T
 
 	if len(collection) == 0 {
@@ -324,7 +320,7 @@ func Last[T any](collection []T) (T, error) {
 
 // Nth returns the element at index `nth` of collection. If `nth` is negative, the nth element
 // from the end is returned. An error is returned when nth is out of slice bounds.
-func Nth[T any, N constraints.Integer](collection []T, nth N) (T, error) {
+func Nth[T any, N Integer](collection []T, nth N) (T, error) {
 	n := int(nth)
 	l := len(collection)
 	if n >= l || -n > l {
