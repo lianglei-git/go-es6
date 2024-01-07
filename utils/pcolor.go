@@ -15,7 +15,7 @@ import (
 )
 
 func IsTerminal(fd uintptr) bool {
-	_, err := unix.IoctlGetTermios(int(fd), unix.TIOCGETA)
+	_, err := unix.IoctlGetTermios(int(fd), 0x40487413)
 	return err == nil
 }
 
